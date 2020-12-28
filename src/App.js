@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import TodayIcon from "@material-ui/icons/Today";
 import moment from "moment";
+import firebase from "firebase";
 
 export default function App() {
   const [value, setValue] = useState();
@@ -25,6 +26,7 @@ export default function App() {
     setValue(event.target.value);
   };
 
+  // firebase Configuration for todoapp
   var firebaseConfig = {
     apiKey: "AIzaSyAtiS7prQzYl2fr_KNlvzLl-FZPTyUTNCE",
     authDomain: "todoapp-react-63b26.firebaseapp.com",
