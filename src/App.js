@@ -1,30 +1,20 @@
 import React, { useState } from "react";
 import "./App.css";
-import {
-  TextField,
-  Button,
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  ListItemText,
-} from "@material-ui/core";
-import TodayIcon from "@material-ui/icons/Today";
+import { TextField, Button } from "@material-ui/core";
 import moment from "moment";
 import firebase from "firebase";
+import ListTodo from "./ListTodo";
 
 export default function App() {
   const [value, setValue] = useState();
-  const [time, setTime] = useState("");
-  const [isData, setIsData] = useState(false);
-  const [todoValue, setTodoValue] = useState("");
+  // const [time, setTime] = useState("");
+  // const [todoValue, setTodoValue] = useState("");
 
   const addTodo = (event) => {
     event.preventDefault();
 
-    setTodoValue(value);
-    setTime(moment().format("MMMM Do YYYY, h:mm:ss a"));
-    setIsData(true);
+    // setTodoValue(value);
+    // setTime(moment().format("MMMM Do YYYY, h:mm:ss a"));
 
     // for firebase
 
@@ -78,20 +68,7 @@ export default function App() {
         </Button>
       </form>
       <br />
-      {isData ? (
-        <div className="todo">
-          <List>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <TodayIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={todoValue} secondary={time} />
-            </ListItem>
-          </List>
-        </div>
-      ) : null}
+      <ListTodo />
     </div>
   );
 }
