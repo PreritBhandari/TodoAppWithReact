@@ -16,10 +16,24 @@ import firebase from "firebase";
 export default function App() {
   const [value, setValue] = useState();
   const [time, setTime] = useState("");
+  const [isData, setIsData] = useState(false);
   const [todoValue, setTodoValue] = useState("");
-  const addTodo = () => {
+
+  const addTodo = (event) => {
+    event.preventDefault();
+
     setTodoValue(value);
     setTime(moment().format("MMMM Do YYYY, h:mm:ss a"));
+    setIsData(true);
+
+    // for firebase
+
+    const firestore = firebase.firestore();
+
+    firestore.collection("todo").add({
+      todo: value,
+      date: moment().format("MMMM Do YYYY, h:mm:ss a"),
+    });
   };
 
   const textChange = (event) => {
@@ -37,8 +51,9 @@ export default function App() {
     measurementId: "G-BFCHJCLKNQ",
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
   return (
     <div className="todoApp">
       <h1> Todo App</h1>
@@ -63,18 +78,20 @@ export default function App() {
         </Button>
       </form>
       <br />
-      <div className="todo">
-        <List>
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <TodayIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={todoValue} secondary={time} />
-          </ListItem>
-        </List>
-      </div>
+      {isData ? (
+        <div className="todo">
+          <List>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <TodayIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={todoValue} secondary={time} />
+            </ListItem>
+          </List>
+        </div>
+      ) : null}
     </div>
   );
 }
