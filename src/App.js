@@ -20,10 +20,16 @@ export default function App() {
 
     const firestore = firebase.firestore();
 
-    firestore.collection("todo").add({
-      todo: value,
-      date: moment().format("MMMM Do YYYY, h:mm:ss a"),
-    });
+    firestore
+      .collection("todo")
+      .add({
+        todo: value,
+        date: moment().format("MMMM Do YYYY, h:mm:ss a"),
+      })
+      .then(() => {
+        console.log("Todo Added");
+        window.location.reload();
+      });
   };
 
   const textChange = (event) => {
