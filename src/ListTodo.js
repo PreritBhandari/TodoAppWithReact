@@ -23,9 +23,11 @@ export default function ListTodo() {
   const [date, setDate] = useState("");
 
   const getData = async () => {
-    const dataReceived = await firebase.firestore().collection("todo").get();
-    console.log(dataReceived);
-
+    const dataReceived = await firebase
+      .firestore()
+      .collection("todo")
+      .orderBy("date", "desc")
+      .get();
     return dataReceived.docs.map((doc) => doc);
   };
 

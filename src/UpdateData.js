@@ -9,6 +9,7 @@ import {
   Button,
 } from "@material-ui/core";
 import firebase from "firebase";
+import moment from "moment";
 
 export default function UpdateData(props) {
   const [value, setValue] = useState();
@@ -20,6 +21,7 @@ export default function UpdateData(props) {
       .doc(id)
       .update({
         todo: value,
+        date: moment().format("MMMM Do YYYY, h:mm:ss a"),
       })
       .then(() => {
         console.log("Document successfully updated!");
