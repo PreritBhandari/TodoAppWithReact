@@ -65,6 +65,14 @@ export default function ListTodo() {
     setModalOpen(false);
   };
 
+  const SecondaryTextColor = {
+    color: "blue",
+  };
+  const PrimaryTextColor = {
+    color: "black",
+    fontWeight: "bold",
+  };
+
   return (
     <div>
       <UpdateData
@@ -79,7 +87,10 @@ export default function ListTodo() {
           <Grid container spacing={3}>
             <List>
               {allTodos.map((todo) => (
-                <ListItem key={todo.id}>
+                <ListItem
+                  style={{ justifyContent: "space-between", width: "130%" }}
+                  key={todo.id}
+                >
                   <ListItemAvatar>
                     <Avatar>
                       <TodayIcon style={{ color: "green" }} />
@@ -88,7 +99,10 @@ export default function ListTodo() {
                   <ListItemText
                     primary={todo.data().todo}
                     secondary={todo.data().date}
+                    secondaryTypographyProps={{ style: SecondaryTextColor }}
+                    primaryTypographyProps={{ style: PrimaryTextColor }}
                   />
+
                   <div style={{ paddingLeft: 30 }}>
                     <Avatar
                       style={{

@@ -52,8 +52,6 @@ export default function App() {
   }
   return (
     <div className="todoApp">
-      <h1> Todo App</h1>
-
       <form>
         <TextField
           id="filled-size-small"

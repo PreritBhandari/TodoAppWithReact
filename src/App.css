@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+form {
+  margin-top: 70px;
+}
+
 .todo {
-  margin-left: 34%;
+  margin-left: 33%;
 }
