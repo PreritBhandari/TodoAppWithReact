@@ -121,12 +121,15 @@ export default function ListTodo() {
                         }
                         fontSize="small"
                         color="primary"
+                        style={{ cursor: "pointer" }}
                       />
 
                       <DeleteIcon
                         onClick={() => deleteTodo(todo.id)}
                         fontSize="small"
                         color="secondary"
+                        style={{ cursor: "pointer" }}
+
                       />
                     </Avatar>
                   </div>

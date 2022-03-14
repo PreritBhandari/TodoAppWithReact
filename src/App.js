@@ -37,15 +37,24 @@ export default function App() {
   };
 
   // firebase Configuration for todoapp
-  var firebaseConfig = {
-    apiKey: "AIzaSyAtiS7prQzYl2fr_KNlvzLl-FZPTyUTNCE",
-    authDomain: "todoapp-react-63b26.firebaseapp.com",
-    projectId: "todoapp-react-63b26",
-    storageBucket: "todoapp-react-63b26.appspot.com",
-    messagingSenderId: "624975785412",
-    appId: "1:624975785412:web:45a8a0f18e6f9a54d78891",
-    measurementId: "G-BFCHJCLKNQ",
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyBDY4GOW914CXpWYTZ6LCt23iXrM7c08yU",
+
+    authDomain: "todoappnew-7cdbc.firebaseapp.com",
+
+    projectId: "todoappnew-7cdbc",
+
+    storageBucket: "todoappnew-7cdbc.appspot.com",
+
+    messagingSenderId: "691957675268",
+
+    appId: "1:691957675268:web:231a53c42dde16383a8c51",
+
+    measurementId: "G-T0JJRWF1PQ"
+
   };
+
   // Initialize Firebase
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -62,14 +71,17 @@ export default function App() {
           onChange={textChange}
         />
         &nbsp;&nbsp;&nbsp;
-        <Button
-          onClick={addTodo}
-          variant="contained"
-          color="primary"
-          size="medium"
-        >
-          Add
-        </Button>
+
+        {value ?
+          <Button
+            style={{ marginTop: 5 }}
+            onClick={addTodo}
+            variant="contained"
+            color="primary"
+            size="medium"
+          >
+            Add Todo
+          </Button> : null}
       </form>
       <br />
       <ListTodo />
